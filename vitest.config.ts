@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import os from 'os';
 
-const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'docker-actions-toolkit-'));
+const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'actions-toolkit-'));
 
 process.env = Object.assign({}, process.env, {
     TEMP: tmpDir,
