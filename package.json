@@ -1,6 +1,6 @@
 {
   "name": "@carry0987/actions-toolkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Toolkit for Github Actions",
   "type": "module",
   "main": "dist/index.cjs",
