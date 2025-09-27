@@ -20,12 +20,14 @@ jobs:
         node-version: [24]
     steps:
       - name: Check commit message version format
+        id: check
         run: |
           if [[ ! "${{ github.event.head_commit.message }}" =~ ^Bump\ to\ v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo 'Commit message not match pattern'
-            exit 1
+            echo "status=false" >> $GITHUB_OUTPUT
           fi
       - name: Checkout repository
+        if: steps.check.outputs.status == 'true'
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
