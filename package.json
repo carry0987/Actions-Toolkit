@@ -14,7 +14,9 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build:js": "rollup --config rollup.config.ts --configPlugin typescript --environment BUILD:js",
+    "build:dts": "rollup --config rollup.config.ts --configPlugin typescript --environment BUILD:dts",
+    "build": "npm run build:js && npm run build:dts",
     "lint": "prettier --write \"src/**/*.{ts,tsx,scss}\" \"test/**/*.{ts,tsx}\"",
     "test": "vitest run",
     "test:cov": "vitest run --coverage",
@@ -49,13 +51,15 @@
     "@actions/io": "^1.1.3",
     "@actions/tool-cache": "^2.0.2",
     "csv-parse": "^6.1.0",
-    "tmp": "^0.2.5",
-    "jwt-decode": "^4.0.0"
+    "jwt-decode": "^4.0.0",
+    "tmp": "^0.2.5"
   },
   "devDependencies": {
     "@octokit/core": "^7.0.4",
     "@octokit/openapi-types": "^26.0.0",
     "@octokit/plugin-rest-endpoint-methods": "^16.1.0",
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-replace": "^6.0.2",
     "@rollup/plugin-terser": "^0.4.4",
